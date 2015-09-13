@@ -1,4 +1,4 @@
-package com.mirre.cardgame;
+package com.mirre.cardgame.logic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class Deck {
 	private final Random random = new Random();
 	
 	private void shuffle(){
-		trueDeck.sort((card1, card2) -> random.nextInt(2));
+		trueDeck.sort((card1, card2) -> random.nextBoolean() ? 1 : -1);
 	}
 	
 	public Card[] getCards(int amount){

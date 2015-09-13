@@ -1,9 +1,9 @@
-package com.mirre.cardgame;
+package com.mirre.cardgame.logic;
 
 import java.util.Optional;
 
-import com.mirre.cardgame.Deck.CardColor;
-import com.mirre.cardgame.Deck.CardType;
+import com.mirre.cardgame.logic.Deck.CardColor;
+import com.mirre.cardgame.logic.Deck.CardType;
 
 public class Card {
 
@@ -35,5 +35,21 @@ public class Card {
 
 	public CardColor getColor() {
 		return color;
+	}
+
+	@Override
+	public String toString() {
+		return color + " " + type;
+	}
+	
+	public static Card[] mergeHand(Card[] hand, Card... cards){
+		Card[] merged = new Card[hand.length + cards.length];
+		for(int i = 0 ; i < hand.length ; i++){
+			merged[i] = hand[i];
+		}
+		for(int i = hand.length ; i < hand.length + cards.length ; i++){
+			merged[i] = cards[i - hand.length];
+		}
+		return merged;
 	}
 }
